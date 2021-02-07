@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     float x;
     float z;
-    public float moveSpeed = 2f;
+    public float moveSpeed;
 
     Rigidbody rb;
     Animator animator;
