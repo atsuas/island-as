@@ -11,18 +11,34 @@ public class PlayerManager : MonoBehaviour
     Rigidbody rb;
     Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
+
+        //攻撃
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            animator.SetTrigger("Attack");
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            animator.SetTrigger("Kick");
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Jump");
+        }
+        else if (Input.GetKeyDown(KeyCode.M))
+        {
+            animator.SetTrigger("Brooklyn");
+        }
     }
 
     void FixedUpdate()
