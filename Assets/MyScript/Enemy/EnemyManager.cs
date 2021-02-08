@@ -7,15 +7,18 @@ public class EnemyManager : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
+    Animator animator;  //アニメーターを作成
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); //agentを設定
-        agent.destination = target.position; //agentの場所はどこですか？ ＝ ターゲットの場所です
+        animator = GetComponent<Animator>();    // アニメーターを取得
+        agent = GetComponent<NavMeshAgent>(); 
+        agent.destination = target.position; 
     }
 
     void Update()
     {
         agent.destination = target.position;
+        animator.SetFloat("Distance", agent.remainingDistance); //Distanceを取得して距離に応じて動作する
     }
 }
