@@ -7,11 +7,11 @@ public class EnemyManager : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
-    Animator animator;  //アニメーターを作成
+    Animator animator;
 
     void Start()
     {
-        animator = GetComponent<Animator>();    // アニメーターを取得
+        animator = GetComponent<Animator>();  
         agent = GetComponent<NavMeshAgent>(); 
         agent.destination = target.position; 
     }
@@ -19,6 +19,11 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         agent.destination = target.position;
-        animator.SetFloat("Distance", agent.remainingDistance); //Distanceを取得して距離に応じて動作する
+        animator.SetFloat("Distance", agent.remainingDistance); 
+    }
+
+    private void OnTriggerEnter(Collider other)　// 当たり判定
+    {
+        Debug.Log("接触(敵)");
     }
 }

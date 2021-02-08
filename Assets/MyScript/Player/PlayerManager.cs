@@ -49,4 +49,9 @@ public class PlayerManager : MonoBehaviour
         rb.velocity = new Vector3(x, 0, z) * moveSpeed;
         animator.SetFloat("Speed", rb.velocity.magnitude);
     }
+
+    private void OnTriggerEnter(Collider other) // 当たり判定
+    {
+        Debug.Log("接触(プレーヤー)");
+    }
 }
