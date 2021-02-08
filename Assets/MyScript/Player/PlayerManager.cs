@@ -52,6 +52,11 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) // 当たり判定
     {
-        Debug.Log("接触(プレーヤー)");
+        Damager damager = other.GetComponent<Damager>();
+        if (damager != null)
+        {
+            //ダメージを与えるものにぶつかったら
+            animator.SetTrigger("Hurt");
+        }
     }
 }

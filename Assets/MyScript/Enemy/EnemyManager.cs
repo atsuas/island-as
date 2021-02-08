@@ -24,6 +24,11 @@ public class EnemyManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)　// 当たり判定
     {
-        Debug.Log("接触(敵)");
+        Damager damager = other.GetComponent<Damager>();
+        if (damager != null)
+        {
+            //ダメージを与えるものにぶつかったら
+            animator.SetTrigger("Hurt");
+        }
     }
 }
