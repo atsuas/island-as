@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     float x;
     float z;
     public float moveSpeed;
+    public Collider punchCollider; //設定する
+    public Collider kickCollider;
 
     Rigidbody rb;
     Animator animator;
@@ -15,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        HideColliderPunch();   //最初は隠しておく
+        HideColliderKick();
     }
 
     void Update()
@@ -50,12 +54,29 @@ public class PlayerManager : MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.magnitude);
     }
 
-    private void OnTriggerEnter(Collider other) // 当たり判定
+    //攻撃の判定
+    public void HideColliderPunch()
+    {
+        punchCollider.enabled = false; //無効にする
+    }
+    public void ShowColliderPunch()
+    {
+        punchCollider.enabled = true;  //有効にする
+    }
+    public void HideColliderKick()
+    {
+        kickCollider.enabled = false; //無効にする
+    }
+    public void ShowColliderKick()
+    {
+        kickCollider.enabled = true;  //有効にする
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         Damager damager = other.GetComponent<Damager>();
         if (damager != null)
         {
-            //ダメージを与えるものにぶつかったら
             animator.SetTrigger("Hurt");
         }
     }
