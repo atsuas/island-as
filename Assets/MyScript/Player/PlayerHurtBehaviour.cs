@@ -7,6 +7,7 @@ public class PlayerHurtBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.ResetTrigger("Hurt");　//攻撃を受けたらリセットする
         animator.GetComponent<PlayerManager>().moveSpeed = 0.4f;
     }
 
@@ -19,6 +20,7 @@ public class PlayerHurtBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.ResetTrigger("Hurt"); //抜けるときもリセットする
         animator.GetComponent<PlayerManager>().moveSpeed = 3;
     }
 
